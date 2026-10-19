@@ -18,7 +18,8 @@ public class IfStatements {
     public static String evenOrOdd(int number) {
         // TODO: 1 - Use the ternary operator ( condition ? valueIfTrue : valueIfFalse )
         //  to return "Even" or "Odd" based on whether number % 2 == 0.
-        return null;
+        return (number%2==0)? "even": "odd";
+
     }
 
     /**
@@ -33,6 +34,7 @@ public class IfStatements {
     public static boolean isEligibleForLoan(int age, double income, boolean hasGuarantor) {
         // TODO: 2 - Use a single return statement with && and || operators
         //  to express the eligibility condition described above.
+        if((hasGuarantor && age >= 16)||(age >= 18 && income >= 30000) ) return true;
         return false;
     }
 
@@ -46,7 +48,7 @@ public class IfStatements {
     public static String getGrade(int score) {
         // TODO: 3 - Use nested ternary operators to return the correct grade.
         //  Example pattern: score >= 90 ? "A" : score >= 80 ? "B" : ...
-        return null;
+        return (score>89)? "A" : (score>79) ? "B" : (score>69) ? "C": (score>59) ? "D": "F";
     }
 
     /**
@@ -59,7 +61,8 @@ public class IfStatements {
     public static int safeLength(String text) {
         // TODO: 4 - Check if text is null before calling text.length().
         //  Return -1 if text is null, otherwise return text.length().
-        return 0;
+        if(text == null) return -1;
+        return text.length();
     }
 
     /**
@@ -75,7 +78,13 @@ public class IfStatements {
         //  If both are null, return true.
         //  If only one is null, return false.
         //  Otherwise, use a.equals(b) — never use == for string content comparison.
-        return false;
+        if(a == null && b == null){
+            return true;
+        }
+        else if(a == null || b == null){
+            return false;
+        }
+        return a.equals(b);
     }
 
     /**
@@ -95,7 +104,17 @@ public class IfStatements {
         //      ...
         //      default -> "Invalid";
         //  };
-        return null;
+        return switch(day){
+            case 1 -> "monday";
+            case 2 -> "tuesday";
+            case 3 -> "wednesday";
+            case 4 -> "thursday";
+            case 5 -> "friday";
+            case 6 -> "saturday";
+            case 7 -> "sunday";
+            default -> "invalid";
+        };
+
     }
 
     public static void main(String[] args) {
