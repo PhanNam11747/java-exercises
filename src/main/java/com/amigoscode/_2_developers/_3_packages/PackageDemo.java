@@ -1,4 +1,10 @@
 package com.amigoscode._2_developers._3_packages;
+import com.amigoscode._2_developers._3_packages.classtests.test;
+
+import java.util.ArrayList;
+import java.time.LocalDate;
+import static java.lang.Math.PI;
+
 
 // TODO: 1 - Import java.util.List and java.util.ArrayList, then create a List<String>
 //  in the useListFromUtil() method below.
@@ -21,7 +27,13 @@ public class PackageDemo {
     public static void useListFromUtil() {
         // TODO: 1 (continued) - Create a List<String> using ArrayList, add three fruits,
         //  and print the list. Make sure you have the import statements at the top.
-
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("banana");
+        list.add("mango");
+        list.add("peach");
+        for(var item:list){
+            System.out.println(item);
+        }
     }
 
     /**
@@ -30,6 +42,7 @@ public class PackageDemo {
     public static void printToday() {
         // TODO: 2 (continued) - Use LocalDate.now() to get today's date and print it.
         //  Make sure you have the import statement at the top.
+        System.out.println(LocalDate.now());
 
     }
 
@@ -41,6 +54,10 @@ public class PackageDemo {
         // TODO: 3 - Create a java.util.HashMap<String, Integer> using the fully qualified
         //  class name (no import). Put two entries (e.g., "Alice"->90, "Bob"->85) and print it.
         //  Example: java.util.HashMap<String, Integer> map = new java.util.HashMap<>();
+        java.util.HashMap<String, Integer> map = new java.util.HashMap<String, Integer>();
+        map.put("alice", 90);
+        map.put("Bod", 85);
+        System.out.println(map);
 
     }
 
@@ -57,7 +74,8 @@ public class PackageDemo {
     public static double circleArea(double radius) {
         // TODO: 4 (continued) - Return PI * radius * radius using the statically imported PI.
         //  You need to add: import static java.lang.Math.PI; at the top of this file.
-        return 0;
+        double area = radius* radius * PI;
+        return area;
     }
 
     /**
@@ -69,7 +87,8 @@ public class PackageDemo {
         //  in this project (e.g., com.amigoscode._2_developers._2_conditionals.IfStatements).
         //  Call one of its static methods and print the result.
         //  Example: String result = com.amigoscode._2_developers._2_conditionals.IfStatements.evenOrOdd(4);
-
+        String result = com.amigoscode._2_developers._3_packages.classtests.test.sayHi();
+        System.out.println(result);
     }
 
     public static void main(String[] args) {
