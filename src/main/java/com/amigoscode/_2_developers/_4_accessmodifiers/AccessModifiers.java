@@ -1,5 +1,6 @@
 package com.amigoscode._2_developers._4_accessmodifiers;
 
+
 /**
  * Access Modifiers Exercises
  *
@@ -7,31 +8,45 @@ package com.amigoscode._2_developers._4_accessmodifiers;
  * and package-private (default) access levels. Implement getters/setters
  * and demonstrate encapsulation.
  */
+
+
 public class AccessModifiers {
 
     // TODO: 1 - Declare a private String field called 'secret'.
     //  Private means only this class can access it directly.
-
+    private String name = "nam";
 
     // TODO: 2 - Declare a public method called 'publicGreeting' that returns
     //  the String "Hello from a public method!".
     //  Public means any class, in any package, can call this method.
-
+    public String publicGreeting(){
+        return "Hello from a public method";
+    }
 
     // TODO: 3 - Declare a protected method called 'protectedGreeting' that returns
     //  the String "Hello from a protected method!".
     //  Protected means accessible within this package and by subclasses in other packages.
-
+    protected String protectedGreeting(){
+        return "hello from a protected method!";
+    }
 
     // TODO: 4 - Declare a package-private (default) method called 'packageGreeting'
     //  that returns the String "Hello from a package-private method!".
     //  Package-private means no access modifier keyword — accessible only within this package.
-
+    String packageGreeting(){
+        return "hello from a package_private method";
+    }
 
     // TODO: 5 - Create a getter (getSecret) and a setter (setSecret) for the 'secret' field.
     //  The getter should be public and return the secret.
     //  The setter should be public, take a String parameter, and assign it to the field.
-
+    private String secret;
+    public void setter(String secret){
+        this.secret = secret;
+    }
+    public String geter(){
+        return secret;
+    }
 
     // TODO: 6 - Create a public method called 'demonstrateInternalAccess' that:
     //  - Sets the secret field directly (not through the setter) to "Internal access works!"
@@ -39,5 +54,10 @@ public class AccessModifiers {
     //  - Returns a String summarizing: the secret value and all three greetings,
     //    separated by newlines.
     //  This demonstrates that within the same class, ALL access levels are accessible.
-
+    public void demonstrateInteralAccess(){
+        System.out.println(packageGreeting());
+        System.out.println(protectedGreeting());
+        System.out.println(publicGreeting());
+        System.out.println(geter());
+    }
 }
