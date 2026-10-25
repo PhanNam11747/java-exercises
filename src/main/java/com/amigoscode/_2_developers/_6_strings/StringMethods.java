@@ -19,7 +19,11 @@ public class StringMethods {
     public static String compareEquality(String a, String b) {
         // TODO: 1 - Use equals() and equalsIgnoreCase() to compare a and b.
         //  Return a string in the format: "equals: <result>, equalsIgnoreCase: <result>"
-        return null;
+
+
+        String string = "equals: %b , equalsIgnoreCase: %b";
+        String res = String.format(string, a.equals(b), a.equalsIgnoreCase(b));
+        return res;
     }
 
     /**
@@ -33,7 +37,11 @@ public class StringMethods {
     public static String compareLexicographic(String a, String b) {
         // TODO: 2 - Use a.compareTo(b) and return:
         //  "before" if result < 0, "equal" if result == 0, "after" if result > 0.
-        return null;
+        int result = a.compareTo(b);
+        if(result<0) return "before";
+        else if (result==0) return "equal";
+        else return "after" ;
+
     }
 
     /**
@@ -48,7 +56,9 @@ public class StringMethods {
         // TODO: 3 - Use contains() to check if text contains keyword.
         //  Use indexOf() to find the position of keyword in text.
         //  Return "contains: <bool>, indexOf: <index>"
-        return null;
+        String string= "contains: %b, indexOf: %d";
+        String res = String.format(string, text.contains(keyword), text.indexOf(keyword));
+        return res;
     }
 
     /**
@@ -64,7 +74,9 @@ public class StringMethods {
         // TODO: 4 - First use replace(oldWord, newWord) to swap words.
         //  Then use replaceAll("\\d", "#") to replace all digits with "#".
         //  Return the final result.
-        return null;
+        text = text.replace(oldWord, newWord);
+        text = text.replaceAll("\\d", "#");
+        return text;
     }
 
     /**
@@ -79,7 +91,14 @@ public class StringMethods {
         // TODO: 5 - Use text.split(delimiter) to get an array of parts.
         //  Build a result string with each part on a new line: "[i] part"
         //  Example: "[0] apple\n[1] banana\n[2] cherry"
-        return null;
+        String[]str = text.split(delimiter);
+        int i = -1;
+        String res = "";
+        for(String item : str){
+            i+=1;
+            res += "["+i+"]"+" " + item + "\n";
+        }
+        return res;
     }
 
     /**
@@ -93,7 +112,11 @@ public class StringMethods {
     public static String checkStartEnd(String filename, String prefix, String extension) {
         // TODO: 6 - Use startsWith(prefix) and endsWith(extension).
         //  Return: "startsWith '<prefix>': <bool>, endsWith '<extension>': <bool>"
-        return null;
+        boolean start = filename.startsWith(prefix);
+        boolean end = filename.endsWith(extension);
+        String str = "startsWith %s: %b, endsWith %s: %b";
+        String res = String.format(str, prefix, start, extension, end);
+        return res;
     }
 
     /**
@@ -107,7 +130,8 @@ public class StringMethods {
     public static String substringDemo(String text, int beginIndex, int endIndex) {
         // TODO: 7 - Use text.substring(beginIndex, endIndex) to extract a portion of text.
         //  Return the substring.
-        return null;
+        text = text.substring(beginIndex, endIndex);
+        return text;
     }
 
     /**
@@ -122,7 +146,9 @@ public class StringMethods {
     public static String formatReceipt(String item, int quantity, double price) {
         // TODO: 8 - Use String.format() to create a formatted string.
         //  Format: "%-15s x%-5d $%.2f" (left-align item in 15 chars, quantity in 5, price with 2 decimals)
-        return null;
+        String str = "%-15s x%-5d $%.2f";
+        String res = String.format(str,item, quantity, price);
+        return res;
     }
 
     public static void main(String[] args) {
