@@ -20,7 +20,9 @@ public class UserInputExercises {
     public static String readString(Scanner scanner) {
         // TODO: 1 - Prompt the user with "Enter your name: " (use System.out.print).
         //  Read a full line using scanner.nextLine() and return it.
-        return null;
+        System.out.print("Enter your name: ");
+        String str = scanner.nextLine();
+        return str;
     }
 
     /**
@@ -32,13 +34,24 @@ public class UserInputExercises {
      * @return the integer entered, or -1 if input was invalid
      */
     public static int readIntSafely(Scanner scanner) {
+        System.out.print("enter a number: ");
+        try {
+            int a = scanner.nextInt();
+            scanner.nextLine();
+            return a;
+
+        }catch(InputMismatchException e ){
+            scanner.nextLine();
+            System.out.println("invalid input");
+            return -1;
+        }
         // TODO: 2 - Prompt the user with "Enter a number: ".
         //  Use a try-catch block:
         //    try to read an int with scanner.nextInt()
         //    catch InputMismatchException, print "Invalid input!", and return -1.
         //  Don't forget to consume the leftover newline with scanner.nextLine()
         //  after reading the int (both in success and failure cases).
-        return 0;
+
     }
 
     /**
@@ -53,7 +66,16 @@ public class UserInputExercises {
         //  Read a line with scanner.nextLine().
         //  If the line equals "quit" (case-insensitive), break out of the loop.
         //  Otherwise, print "You entered: " followed by the input.
-
+        String str = "";
+        System.out.print("enter text: ");
+        String a = scanner.nextLine();
+        while(true){
+            str+=a +"\n";
+            System.out.print("Enter text (or 'quit' to stop): ");
+            a = scanner.nextLine();
+            if(a.equalsIgnoreCase("quit")) break;
+        }
+        System.out.println(str);
     }
 
     /**
@@ -64,7 +86,8 @@ public class UserInputExercises {
      */
     public static boolean isValidAge(int age) {
         // TODO: 4 - Return true if age is between 0 and 150 (inclusive), false otherwise.
-        return false;
+        if(age <= 0 || age>=150) return false;
+        return true;
     }
 
     /**
@@ -75,6 +98,7 @@ public class UserInputExercises {
      */
     public static boolean isValidEmail(String email) {
         // TODO: 5 - Return true if email is not null and contains "@", false otherwise.
+        if(!email.equals(null) || email.indexOf("@") > 0) return true;
         return false;
     }
 
@@ -85,6 +109,27 @@ public class UserInputExercises {
      * @param scanner the Scanner to read from
      */
     public static void registrationForm(Scanner scanner) {
+        System.out.print("enter your name: ");
+        String name = scanner.nextLine();
+        while(name.isBlank()){
+            System.out.println("any non-empty string is valid");
+            System.out.print("enter your name: ");
+            name = scanner.nextLine();
+        }
+        System.out.print("enter your age: ");
+        int age = scanner.nextInt();
+        while(!isValidAge(age)){
+            System.out.println("non valid number");
+            System.out.print("enter your age: ");
+            age = scanner.nextInt();
+        }
+        System.out.print("enter your email: ");
+        String email = scanner.nextLine();
+        while(isValidEmail(email)){
+            System.out.println("Invalid email");
+            System.out.print("enter your email: ");
+            email = scanner.nextLine();
+        }
         // TODO: 6 - Build a registration form:
         //  1. Ask for name (any non-empty string is valid). Keep asking if empty.
         //  2. Ask for age. Keep asking until isValidAge() returns true.
