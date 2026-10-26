@@ -1,9 +1,7 @@
 package com.amigoscode._2_developers._11_files;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import javax.print.DocFlavor;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -30,7 +28,8 @@ public class FileReading {
     public static List<String> readAllLines(String filePath) throws IOException {
         // TODO: 1 - Use Files.readAllLines(Path.of(filePath)) to read all lines.
         //  Return the resulting List<String>.
-        return null;
+        List<String> list = Files.readAllLines(Path.of(filePath));
+        return list;
     }
 
     /**
@@ -46,6 +45,14 @@ public class FileReading {
         //      read lines in a loop using reader.readLine() until it returns null.
         //      Print each line.
         //  }
+        try(BufferedReader reader = new BufferedReader(new FileReader(filePath))){
+            String line;
+            while((line = reader.readLine())!=null){
+                System.out.println(line);
+            }
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
 
     }
 
@@ -60,7 +67,8 @@ public class FileReading {
         // TODO: 3 - Read the file line by line and count the lines.
         //  You can use Files.readAllLines() and call .size(),
         //  or use Files.lines() with .count() for a stream-based approach.
-        return 0;
+        long a = Files.readAllLines(Path.of(filePath)).size();
+        return a;
     }
 
     /**
@@ -76,7 +84,15 @@ public class FileReading {
         //  Filter the lines to only include those that contain the given word.
         //  Hint: use a for loop and an ArrayList to collect matching lines,
         //  or use Files.readAllLines().stream().filter(...).toList()
-        return null;
+        List<String> list = Files.readAllLines(Path.of(filePath)).stream().filter(line->line.contains(word)).toList();
+        /* List<String> Lines = Files.realAllLines(Path.of(filePath));
+        List<String> res = new List<String>();
+        for(string line : lines){
+            if (line.contains(word)) res.add(word);
+        }
+        return res;
+         */
+        return list;
     }
 
     /**
@@ -89,7 +105,8 @@ public class FileReading {
     public static String readFileAsString(String filePath) throws IOException {
         // TODO: 5 - Use Files.readString(Path.of(filePath)) to read the entire file
         //  as a single String. Return it.
-        return null;
+        String a = Files.readString(Path.of(filePath));
+        return a ;
     }
 
     /**
@@ -103,7 +120,14 @@ public class FileReading {
         //  Catch FileNotFoundException (or NoSuchFileException) and return
         //  "File not found: " + filePath.
         //  Catch IOException and return "Error reading file: " + e.getMessage().
-        return null;
+        try {
+            return Files.readString(Path.of(filePath));
+        } catch (FileNotFoundException e){
+            return "file not found: "+filePath;
+        }catch (IOException e) {
+            return "Error reading file: " + e.getMessage();
+        }
+
     }
 
     public static void main(String[] args) throws IOException {
