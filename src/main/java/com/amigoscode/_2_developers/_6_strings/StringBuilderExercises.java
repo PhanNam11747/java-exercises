@@ -23,9 +23,9 @@ public class StringBuilderExercises {
         //  Append "Hello, ", then name, then "! You are ", then age, then " years old."
         //  Convert to String and return.
         StringBuilder sb = new StringBuilder();
-        sb.append("Hello");
-        sb.append("! you are ");
+        sb.append("hello,");
         sb.append(name);
+        sb.append("!you are");
         sb.append(age);
         sb.append("years old");
         return sb.toString();
@@ -45,9 +45,10 @@ public class StringBuilderExercises {
         //  Insert middleName + " " at position (spaceIndex + 1).
         //  Convert to String and return.
         StringBuilder sb = new StringBuilder(fullName);
-        int ind = sb.indexOf(" ");
-        sb.insert(ind+1, middleName);
+        int a = sb.indexOf(" ");
+        sb.insert(a+1, middleName);
         return sb.toString();
+
     }
 
     /**

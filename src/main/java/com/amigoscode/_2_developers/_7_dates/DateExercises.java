@@ -91,7 +91,9 @@ public class DateExercises {
         // TODO: 6 - Create a DateTimeFormatter using DateTimeFormatter.ofPattern(pattern).
         //  Use date.format(formatter) to format the date.
         //  Return the formatted string.
-        return null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+
+        return date.format(formatter).toString();
     }
 
     /**
