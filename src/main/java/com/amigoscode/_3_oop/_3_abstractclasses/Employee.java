@@ -21,29 +21,62 @@ import java.util.List;
 //   - name (String)
 //   - baseSalary (double)
 //   Create a constructor that takes both fields and assigns them.
-class Employee {
+abstract class Employee {
+    protected String name;
+    protected double balance;
+
+    public Employee(String name, double balance) {
+        this.name = name;
+        this.balance = balance;
+    }
 
     // TODO: 2 - Declare an abstract method: double calculatePay()
     //   Each subclass will compute pay differently.
-
+    public abstract double calculatePay();
 
     // TODO: 3 - Create a concrete method: String getDetails()
     //   Return: "<name> - Pay: $<calculatePay()>"
     //   Use String.format("%.2f", calculatePay()) for formatting.
+    public String getDetails(){
+        return "%s -Pay: %.2f".formatted( name, calculatePay());
+    }
 
 }
 
 // TODO: 4 - Create a FullTimeEmployee class that extends Employee.
 //   - Constructor takes name and baseSalary, calls super(name, baseSalary)
 //   - Implement calculatePay() to simply return baseSalary
+class FullTimeEmployee extends Employee{
 
+    public FullTimeEmployee(String name, double balance) {
+        super(name, balance);
+    }
+
+    @Override
+    public double calculatePay() {
+        return balance;
+    }
+}
 
 // TODO: 5 - Create a ContractEmployee class that extends Employee.
 //   - Add two private fields: hourlyRate (double) and hoursWorked (int)
 //   - Constructor takes name, hourlyRate, and hoursWorked
 //     (pass name and 0.0 as baseSalary to super)
 //   - Implement calculatePay() to return hourlyRate * hoursWorked
+class ConstractEmployee extends Employee{
+    private double hourlyRate;
+    private int hoursWorked;
+    public ConstractEmployee(String name, double balance, double hourlyRate, int hoursWorked) {
+        super(name, balance);
+        this.hourlyRate = hourlyRate;
+        this.hoursWorked = hoursWorked;
+    }
 
+    @Override
+    public double calculatePay() {
+        return 100 + hoursWorked * hourlyRate;
+    }
+}
 
 // TODO: 6 - In the EmployeeDemo class below, complete the main method:
 //   - Create a List<Employee> with at least one FullTimeEmployee
@@ -57,5 +90,13 @@ class Employee {
 class EmployeeDemo {
     public static void main(String[] args) {
         // Complete TODOs 6 and 7 here
+        Employee a = new FullTimeEmployee("Phuc", 100);
+        Employee b = new ConstractEmployee("Nam", 200, 20.5,5);
+        List<Employee> employees = new ArrayList<>();
+        employees.add(a);
+        employees.add(b);
+        for(Employee people :  employees){
+            System.out.println(people.getDetails());
+        }
     }
 }
