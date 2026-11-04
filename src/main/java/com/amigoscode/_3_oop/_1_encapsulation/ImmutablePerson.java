@@ -69,7 +69,6 @@ public final class ImmutablePerson {
     // TODO: 6 - Override toString() to return a string in the format:
     //   "ImmutablePerson{name='XXX', age=XXX, email='XXX'}"
 
-
     @Override
     public String toString() {
         return "ImmutablePerson{" +
